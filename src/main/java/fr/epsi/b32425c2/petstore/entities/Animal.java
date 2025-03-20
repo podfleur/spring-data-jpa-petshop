@@ -2,13 +2,15 @@ package fr.epsi.b32425c2.petstore.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "animal_type")
 public abstract class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String birth;
+    private Date birth;
     private String couleur;
 
     @ManyToOne
@@ -16,7 +18,7 @@ public abstract class Animal {
 
     public Animal() {}
 
-    public Animal(String birth, String couleur, PetStore petStore) {
+    public Animal(Date birth, String couleur, PetStore petStore) {
         this.birth = birth;
         this.couleur = couleur;
         this.petStore = petStore;
@@ -26,7 +28,7 @@ public abstract class Animal {
         return id;
     }
 
-    public String getBirth() {
+    public Date getBirth() {
         return birth;
     }
 
@@ -38,7 +40,7 @@ public abstract class Animal {
         return petStore;
     }
 
-    public void setBirth(String birth) {
+    public void setBirth(Date birth) {
         this.birth = birth;
     }
 

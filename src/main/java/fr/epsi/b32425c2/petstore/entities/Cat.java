@@ -2,6 +2,8 @@ package fr.epsi.b32425c2.petstore.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @DiscriminatorValue("Cat")
 public class Cat extends Animal {
@@ -9,7 +11,7 @@ public class Cat extends Animal {
 
     public Cat() {}
 
-    public Cat(String birth, String couleur, PetStore petStore, String chipId) {
+    public Cat(Date birth, String couleur, PetStore petStore, String chipId) {
         super(birth, couleur, petStore);
         this.chipId = chipId;
     }
