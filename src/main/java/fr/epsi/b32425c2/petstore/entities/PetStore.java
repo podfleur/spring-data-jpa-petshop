@@ -10,7 +10,12 @@ public class PetStore {
     private String name;
     private String managerName;
 
-    @OneToMany(mappedBy = "petStore")
+    @ManyToMany
+    @JoinTable(
+            name = "petstore_product",
+            joinColumns = @JoinColumn(name = "petstore_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     private List<Product> products;
 
     @OneToMany(mappedBy = "petStore")

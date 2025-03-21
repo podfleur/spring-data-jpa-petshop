@@ -36,10 +36,16 @@ public class PetStoreApplication {
             petStoreRepo.saveAll(List.of(store1, store2, store3));
 
             // Création des produits
-            Product prod1 = new Product("P001", "Croquettes", ProdType.FOOD, 10.99, store1);
-            Product prod2 = new Product("P002", "Laisse", ProdType.ACCESSORY, 15.50, store2);
-            Product prod3 = new Product("P003", "Shampooing", ProdType.CLEANING, 8.99, store3);
-            Product prod4 = new Product("P001", "Croquettes Premium", ProdType.FOOD, 20.99, store1);
+            Product prod1 = new Product("P001", "Croquettes", ProdType.FOOD, 10.99);
+            Product prod2 = new Product("P002", "Laisse", ProdType.ACCESSORY, 15.50);
+            Product prod3 = new Product("P003", "Shampooing", ProdType.CLEANING, 8.99);
+            Product prod4 = new Product("P001", "Croquettes Premium", ProdType.FOOD, 20.99);
+
+            // Associer les produits aux magasins
+            prod1.setPetStores(List.of(store1, store2));
+            prod2.setPetStores(List.of(store1));
+            prod3.setPetStores(List.of(store3));
+            prod4.setPetStores(List.of(store3, store2));
             productRepo.saveAll(List.of(prod1, prod2, prod3, prod4));
 
             // Création des animaux

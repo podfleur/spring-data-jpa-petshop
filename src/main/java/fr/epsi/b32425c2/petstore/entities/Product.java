@@ -2,6 +2,8 @@ package fr.epsi.b32425c2.petstore.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,17 +16,16 @@ public class Product {
 
     private double price;
 
-    @ManyToOne
-    private PetStore petStore;
+    @ManyToMany(mappedBy = "products")
+    private List<PetStore> petStores;
 
     public Product() {}
 
-    public Product(String code, String label, ProdType type, double price, PetStore petStore) {
+    public Product(String code, String label, ProdType type, double price) {
         this.code = code;
         this.label = label;
         this.type = type;
         this.price = price;
-        this.petStore = petStore;
     }
 
     public Long getId() {
@@ -47,8 +48,8 @@ public class Product {
         return price;
     }
 
-    public PetStore getPetStore() {
-        return petStore;
+    public List<PetStore> getPetStores() {
+        return petStores;
     }
 
     public void setCode(String code) {
@@ -67,8 +68,8 @@ public class Product {
         this.price = price;
     }
 
-    public void setPetStore(PetStore petStore) {
-        this.petStore = petStore;
+    public void setPetStores(List<PetStore> petStores) {
+        this.petStores = petStores;
     }
 
     @Override
