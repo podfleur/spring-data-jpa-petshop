@@ -11,16 +11,16 @@ public abstract class Animal {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date birth;
-    private String couleur;
+    private String color;
 
     @ManyToOne
     private PetStore petStore;
 
     public Animal() {}
 
-    public Animal(Date birth, String couleur, PetStore petStore) {
+    public Animal(Date birth, String color, PetStore petStore) {
         this.birth = birth;
-        this.couleur = couleur;
+        this.color = color;
         this.petStore = petStore;
     }
 
@@ -33,7 +33,7 @@ public abstract class Animal {
     }
 
     public String getCouleur() {
-        return couleur;
+        return color;
     }
 
     public PetStore getPetStore() {
@@ -44,8 +44,8 @@ public abstract class Animal {
         this.birth = birth;
     }
 
-    public void setCouleur(String couleur) {
-        this.couleur = couleur;
+    public void setCouleur(String color) {
+        this.color = color;
     }
 
     public void setPetStore(PetStore petStore) {
@@ -57,7 +57,7 @@ public abstract class Animal {
         return "Animal : " +
                 "[id - " + id +
                 ", birth - '" + birth + '\'' +
-                ", couleur - '" + couleur + '\'' +
+                ", color - '" + color + '\'' +
                 ']';
     }
 }

@@ -41,12 +41,16 @@ public class PetStoreApplication {
             Product prod3 = new Product("P003", "Shampooing", ProdType.CLEANING, 8.99);
             Product prod4 = new Product("P001", "Croquettes Premium", ProdType.FOOD, 20.99);
 
-            // Associer les produits aux magasins
-            prod1.setPetStores(List.of(store1, store2));
-            prod2.setPetStores(List.of(store1));
-            prod3.setPetStores(List.of(store3));
-            prod4.setPetStores(List.of(store3, store2));
+            // Sauvegarde initiale des produits
             productRepo.saveAll(List.of(prod1, prod2, prod3, prod4));
+
+            // Associer les produits aux magasins
+            store1.setProducts(List.of(prod1, prod2));
+            store2.setProducts(List.of(prod1, prod4));
+            store3.setProducts(List.of(prod3, prod4));
+
+            // Sauvegarde des mises à jour des magasins
+            petStoreRepo.saveAll(List.of(store1, store2, store3));
 
             // Création des animaux
             SimpleDateFormat date1ToFormat = new SimpleDateFormat("yyyy-MM-dd");
